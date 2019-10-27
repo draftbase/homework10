@@ -1,18 +1,37 @@
 package task2V2;
 
 public class Box extends Form {
-    private Form form;
+    private String type;
 
-    public Box(String type, Form form) {
-        super(type);
-        this.form = form;
+    public Box(String type, double a, double b, double c) {
+        super(a, b, c);
+        this.type = type;
     }
 
-    public Form getForm() {
-        return form;
+    public Box(String type, double r) {
+        super(r);
+        this.type = type;
     }
 
-    public void setForm(Form form) {
-        this.form = form;
+    public Box(String type, double r, double h) {
+        super(r, h);
+        this.type = type;
+    }
+
+    public double getVolumeBox(){
+        double vol = 0;
+        switch (type) {
+            case "Prostopadloscian" :
+                vol = getA()*getB()*getC();
+                break;
+            case "Cylinder" :
+                vol = getR()*getH();
+                break;
+            default:
+                //System.out.println("nie ma takiego pudełka");
+                vol = 0;
+                break;
+        }
+        return vol;
     }
 }

@@ -31,10 +31,6 @@ public class Car extends Vehicle {
 
     @Override
     public String getInfo() {
-        //return super.getInfo() + " Klimatyzacja jest " + airConditioning + ".";
-        return "Pojazd: " + getName() + ", pojemność baku to " + getTankCapacity()
-                + " litrów, a średnie spalanie " + getAveFuelConsumptionPer100KmForCar()
-                + " l/100km." + " Klimatyzacja jest " + airConditioning + "."
-                + " Zasięg pojazdu to " + range() + " km.";
+        return super.getInfo() + " Klimatyzacja jest " + airConditioning + ".";
     }
 }

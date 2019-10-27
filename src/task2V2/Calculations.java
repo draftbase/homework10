@@ -17,10 +17,15 @@ public class Calculations {
 
     public Box optimalBox(Product product){
         //obliczenia
-//        for(int i = 0; i<boxes.length;i++){
-//            if(boxes[i].)
-//        }
-        return boxes[1];
+        Box optimalBox = null;
+        for(int i = 0; i<boxes.length;i++){
+            if((boxes[i].getVolumeBox() >= product.getVolumeProduct() && optimalBox == null)
+                    || (boxes[i].getVolumeBox() >= product.getVolumeProduct()
+                    && optimalBox.getVolumeBox() > boxes[i].getVolumeBox())){
+                optimalBox = boxes[i];
+            }
+        }
+        return optimalBox;
     }
 
 }

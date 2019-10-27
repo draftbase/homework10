@@ -1,29 +1,45 @@
 package task2V2;
 
 public class Product extends Form {
-    private String nazwa;
-    private Form form;
+    private String name;
 
-    public Product(String type, String nazwa, Form form) {
-        super(type);
-        this.nazwa = nazwa;
-        this.form = form;
+    public Product(String name, double a, double b, double c) {
+        super(a, b, c);
+        this.name = name;
     }
 
-    public String getNazwa() {
-        return nazwa;
+    public Product(String name, double r) {
+        super(r);
+        this.name = name;
     }
 
-    public void setNazwa(String nazwa) {
-        this.nazwa = nazwa;
+    public Product(String name, double r, double h) {
+        super(r, h);
+        this.name = name;
     }
 
-    public Form getForm() {
-        return form;
+    public String getName() {
+        return name;
     }
 
-    public void setForm(Form form) {
-        this.form = form;
+    public void setName(String name) {
+        this.name = name;
     }
 
+    public double getVolumeProduct(){
+        double vol = 0;
+        switch (name) {
+            case "Prostopadloscian" :
+                vol = getA()*getB()*getC();
+                break;
+            case "Kula" :
+                vol = getR()*Math.PI;
+                break;
+            default:
+                //System.out.println("nie ma takiego produktu");
+                vol = 0;
+                break;
+        }
+        return vol;
+    }
 }

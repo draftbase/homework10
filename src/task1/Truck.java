@@ -27,11 +27,6 @@ public class Truck extends Car {
     private double getFuelCombustionLoad(){
         double fuelPlusPer100Km = 0.5;
         double fuelCombustionLoad = weightLoad*fuelPlusPer100Km/100;
-//        if(weightLoad == 0) {
-//            fuelCombustionLoad = 0;
-//        } else {
-//            fuelCombustionLoad = weightLoad*0.5/100;
-//        }
         return fuelCombustionLoad;
     }
 
@@ -42,11 +37,6 @@ public class Truck extends Car {
 
     @Override
     public String getInfo() {
-        //return super.getInfo() + " Ladunek ciężarówki to: " + weightLoad + "kg.";
-        return "Pojazd: " + getName() + ", pojemność baku to " + getTankCapacity()
-                + " litrów, a średnie spalanie " + getAveFuelConsumptionPer100KmForTruck()
-                + " l/100km." + " Klimatyzacja jest " + isAirConditioning() + "."
-                + " Ladunek ciężarówki to: " + weightLoad + "kg."
-                + " Zasięg pojazdu to " + range() + " km.";
+        return super.getInfo() + " Ladunek ciężarówki to: " + weightLoad + "kg.";
     }
 }

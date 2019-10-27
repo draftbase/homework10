@@ -16,35 +16,37 @@ public class Truck extends Car {
         this.weightLoad = weightLoad;
     }
 
-    @Override
-    public double getAveFuelConsumptionPer100Km() {
-        double aveFuelConsumption = 0;
-        if(super.isAirConditioning()) {
-            aveFuelConsumption = super.getAveFuelConsumptionPer100Km() + 0.8 + getFuelCombustionLoad();
-        } else {
-            aveFuelConsumption = super.getAveFuelConsumptionPer100Km() + getFuelCombustionLoad();
+    public double getAveFuelConsumptionPer100KmForTruck() {
+        double fuelConsumptionWithAirCondutuining = 1.6;
+        if(!super.isAirConditioning()) {
+            fuelConsumptionWithAirCondutuining = 0;
         }
-
-        return aveFuelConsumption;
+        return super.getAveFuelConsumptionPer100Km() + fuelConsumptionWithAirCondutuining + getFuelCombustionLoad();
     }
 
     private double getFuelCombustionLoad(){
-        double fuelCombustionLoad = 0;
-        if(getWeightLoad() == 0) {
-            fuelCombustionLoad = 0;
-        } else {
-            fuelCombustionLoad = getWeightLoad()*0.5/100;
-        }
+        double fuelPlusPer100Km = 0.5;
+        double fuelCombustionLoad = weightLoad*fuelPlusPer100Km/100;
+//        if(weightLoad == 0) {
+//            fuelCombustionLoad = 0;
+//        } else {
+//            fuelCombustionLoad = weightLoad*0.5/100;
+//        }
         return fuelCombustionLoad;
     }
 
     @Override
     public double range() {
-        return getTankCapacity()*100/getAveFuelConsumptionPer100Km();
+        return getTankCapacity()*100/getAveFuelConsumptionPer100KmForTruck();
     }
 
     @Override
     public String getInfo() {
-        return super.getInfo() + " Ladunek ciężarówki to: " + getWeightLoad() + "kg.";
+        //return super.getInfo() + " Ladunek ciężarówki to: " + weightLoad + "kg.";
+        return "Pojazd: " + getName() + ", pojemność baku to " + getTankCapacity()
+                + " litrów, a średnie spalanie " + getAveFuelConsumptionPer100KmForTruck()
+                + " l/100km." + " Klimatyzacja jest " + isAirConditioning() + "."
+                + " Ladunek ciężarówki to: " + weightLoad + "kg."
+                + " Zasięg pojazdu to " + range() + " km.";
     }
 }

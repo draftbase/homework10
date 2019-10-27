@@ -16,24 +16,25 @@ public class Car extends Vehicle {
         this.airConditioning = airConditioning;
     }
 
-    @Override
-    public double getAveFuelConsumptionPer100Km() {
-        double aveFuelConsumption = 0;
-        if(isAirConditioning()) {
-            aveFuelConsumption = super.getAveFuelConsumptionPer100Km() + 0.8;
-        } else {
-            aveFuelConsumption = super.getAveFuelConsumptionPer100Km();
+    public double getAveFuelConsumptionPer100KmForCar() {
+        double fuelConsumptionWithAirCondutuining = 0.8;
+        if(!isAirConditioning()) {
+            fuelConsumptionWithAirCondutuining = 0;
         }
-        return aveFuelConsumption;
+        return super.getAveFuelConsumptionPer100Km() + fuelConsumptionWithAirCondutuining;
     }
 
     @Override
     public double range() {
-        return getTankCapacity()*100/getAveFuelConsumptionPer100Km();
+        return getTankCapacity()*100/getAveFuelConsumptionPer100KmForCar();
     }
 
     @Override
     public String getInfo() {
-        return super.getInfo() + " Klimatyzacja jest " + isAirConditioning() + ".";
+        //return super.getInfo() + " Klimatyzacja jest " + airConditioning + ".";
+        return "Pojazd: " + getName() + ", pojemność baku to " + getTankCapacity()
+                + " litrów, a średnie spalanie " + getAveFuelConsumptionPer100KmForCar()
+                + " l/100km." + " Klimatyzacja jest " + airConditioning + "."
+                + " Zasięg pojazdu to " + range() + " km.";
     }
 }

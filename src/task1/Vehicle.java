@@ -41,7 +41,8 @@ public class Vehicle {
     }
 
     public String getInfo(){
-        return "Pojazd: " + getName() + ", pojemność baku to " + getTankCapacity()
-                + " litrów, a średnie spalanie " + getAveFuelConsumptionPer100Km() + " l/100km.";
+        return "Pojazd: " + name + ", pojemność baku to " + tankCapacity
+                + " litrów, a średnie spalanie " + aveFuelConsumptionPer100Km + " l/100km."
+                + " Zasięg pojazdu to " + range() + " km.";
     }
 }

@@ -36,7 +36,6 @@ public class Product extends Form {
                 vol = getR()*Math.PI;
                 break;
             default:
-                //System.out.println("nie ma takiego produktu");
                 vol = 0;
                 break;
         }
